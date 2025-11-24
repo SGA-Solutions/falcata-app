@@ -19,13 +19,13 @@ export function RoleTabs() {
     const currentRole = pathname?.split("/")[1] || "farm";
 
     return (
-        <div className="flex flex-wrap gap-2 items-center justify-center p-4 bg-white border-b sticky top-0 z-40">
+        <div className="flex w-full overflow-x-auto gap-2 items-center p-4 bg-white border-b sticky top-0 z-40 md:justify-center md:flex-wrap no-scrollbar">
             {roles.map((r) => (
                 <Button
                     key={r.key}
                     onClick={() => router.push(`/${r.key}`)}
                     className={
-                        "rounded-2xl px-4 py-2 shadow transition-all " +
+                        "rounded-2xl px-4 py-2 shadow transition-all whitespace-nowrap " +
                         (pathname?.includes(r.key) ? "ring-2 ring-offset-2 ring-black" : "opacity-70 hover:opacity-100")
                     }
                     variant={pathname?.includes(r.key) ? "default" : "secondary"}

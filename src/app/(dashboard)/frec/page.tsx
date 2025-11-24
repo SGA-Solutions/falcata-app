@@ -35,7 +35,7 @@ export default function FRECPage() {
                             <h3 className="font-bold text-xl flex items-center gap-2"><ClipboardCheck className="h-5 w-5" /> Active Job: #{job.id} — {job.site}</h3>
                             <p className="text-sm text-gray-500 mt-1">{job.trees} trees | Est. {job.est} m³ | Status: <b className="text-black">{job.status}</b></p>
                         </div>
-                        <div className="flex gap-3">
+                        <div className="flex flex-col sm:flex-row gap-3">
                             <Button onClick={startJob} disabled={job.status !== "Assigned"}>Start Job</Button>
                             <Button variant="secondary" onClick={() => setOpen(true)} disabled={job.status !== "In-Progress"}>Record Log</Button>
                             <Button onClick={completeJob} disabled={job.status !== "In-Progress"} variant="outline">Submit for QC</Button>
@@ -43,7 +43,7 @@ export default function FRECPage() {
                     </div>
 
                     <div className="border rounded-xl overflow-hidden">
-                        <div className="p-4 font-medium bg-gray-100/50 border-b flex justify-between items-center">
+                        <div className="p-4 font-medium bg-gray-100/50 border-b flex flex-col sm:flex-row gap-3 justify-between items-start sm:items-center">
                             <span>Recorded Logs ({logs.length})</span>
                             <span className="bg-black text-white px-3 py-1 rounded-full text-sm">Total Volume: {totalVol} m³</span>
                         </div>

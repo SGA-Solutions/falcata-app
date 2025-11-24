@@ -29,9 +29,9 @@ export default function WPPPage() {
 
             <Card>
                 <CardContent className="p-6 space-y-6">
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <h3 className="font-bold text-xl">Available Listings</h3>
-                        <Button variant="outline" onClick={() => setFilterOpen(true)}><Filter className="mr-2 h-4 w-4" />Filter Results</Button>
+                        <Button variant="outline" onClick={() => setFilterOpen(true)} className="w-full sm:w-auto"><Filter className="mr-2 h-4 w-4" />Filter Results</Button>
                     </div>
 
                     <div className="grid gap-4">
@@ -39,15 +39,15 @@ export default function WPPPage() {
                             <div key={l.id} className="border p-5 rounded-xl bg-white hover:shadow-md transition-shadow flex flex-col md:flex-row md:items-center justify-between gap-4">
                                 <div>
                                     <p className="font-bold text-lg flex items-center gap-2"><TreePine className="text-green-700" />{l.stand} — {l.logs} logs</p>
-                                    <div className="flex gap-4 text-sm text-gray-500 mt-2">
-                                        <span className="bg-gray-100 px-2 py-1 rounded">Ø {l.dRange[0]}–{l.dRange[1]} cm</span>
-                                        <span className="bg-gray-100 px-2 py-1 rounded">Vol: {l.vol} m³</span>
-                                        <span className="bg-gray-100 px-2 py-1 rounded">{l.km} km away</span>
+                                    <div className="flex flex-wrap gap-2 sm:gap-4 text-sm text-gray-500 mt-2">
+                                        <span className="bg-gray-100 px-2 py-1 rounded whitespace-nowrap">Ø {l.dRange[0]}–{l.dRange[1]} cm</span>
+                                        <span className="bg-gray-100 px-2 py-1 rounded whitespace-nowrap">Vol: {l.vol} m³</span>
+                                        <span className="bg-gray-100 px-2 py-1 rounded whitespace-nowrap">{l.km} km away</span>
                                     </div>
                                 </div>
-                                <div className="flex gap-3">
-                                    <Button onClick={() => openReserve(l.id)}>Reserve Stock</Button>
-                                    <Button variant="secondary"><Calendar className="mr-2 h-4 w-4" />Schedule Inspection</Button>
+                                <div className="flex flex-col sm:flex-row gap-3">
+                                    <Button onClick={() => openReserve(l.id)} className="w-full sm:w-auto">Reserve Stock</Button>
+                                    <Button variant="secondary" className="w-full sm:w-auto"><Calendar className="mr-2 h-4 w-4" />Schedule Inspection</Button>
                                 </div>
                             </div>
                         ))}

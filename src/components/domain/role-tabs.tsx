@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
+import { useRouter, usePathname } from "next/navigation";
+import { CircleHelp } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { useRouter, usePathname } from "next/navigation";
+import { HelpModal } from "./help-modal";
 
 const roles = [
     { key: "farm", label: "Farm Owner" },
@@ -17,6 +20,7 @@ const roles = [
 export function RoleTabs() {
     const router = useRouter();
     const pathname = usePathname();
+    const [helpOpen, setHelpOpen] = useState(false);
 
     const currentRole = pathname?.split("/")[1] || "farm";
 
@@ -46,7 +50,20 @@ export function RoleTabs() {
                         {r.label}
                     </Button>
                 ))}
+
+                <div className="ml-auto md:absolute md:right-6 md:top-1/2 md:-translate-y-1/2 shrink-0">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="rounded-full"
+                        onClick={() => setHelpOpen(true)}
+                        title="Product Guide"
+                    >
+                        <CircleHelp className="h-6 w-6 text-gray-500 hover:text-gray-900" />
+                    </Button>
+                </div>
             </div>
+            <HelpModal open={helpOpen} onClose={() => setHelpOpen(false)} />
         </div>
     );
 }

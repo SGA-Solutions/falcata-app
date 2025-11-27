@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 import { useRouter, usePathname } from "next/navigation";
 
@@ -19,7 +21,17 @@ export function RoleTabs() {
     const currentRole = pathname?.split("/")[1] || "farm";
 
     return (
-        <div className="flex w-full overflow-x-auto gap-2 items-center p-4 bg-white border-b sticky top-0 z-40 md:justify-center md:flex-wrap no-scrollbar">
+        <div className="flex w-full overflow-x-auto gap-2 items-center p-4 bg-white border-b sticky top-0 z-40 md:justify-center md:flex-wrap no-scrollbar relative">
+            <div className="mr-auto md:absolute md:left-4 md:top-1/2 md:-translate-y-1/2 shrink-0">
+                <Image
+                    src="/falcata_logo.png"
+                    alt="Falcata Logo"
+                    width={120}
+                    height={40}
+                    className="h-10 w-auto mr-20 object-contain"
+                    priority
+                />
+            </div>
             {roles.map((r) => (
                 <Button
                     key={r.key}
